@@ -1,5 +1,24 @@
 <?php
 
+if(isset($_REQUEST['firstName']) && isset($_REQUEST['lastName'])){
+    $q->prepare("INSERT INTO patient VALUES (NULL, ?, ?, ?, ?)");
+    $q->bind_param("ssss", $_REQUEST['firstName'], $_REQUEST['lastName'], $_REQUEST['phone'], $_REQUEST['pesel']);
+    $q->execute();
+    $patientId = $db->insert_id;
+    $q->prepare("INSERT INTO patientappointment VALUES (NULL, ?, ?,)");
+    $q->bind_param("ii",  $patientId, $appointmentId);
+    $q->execute();
+}   else {
+    $q = $db->prepare("SELECT  * FROM patient WHERE pesel = ?");
+    $q->bind_param("s", $_REQUEST['pesel']);
+    $q->execute();
+    $patientResult = $q->get_result();
+    $patient = $patientResult->fetch_assoc();
+    $patientId = $patient['id'];
+    $q->prepare("INSERT INTO patientappointment VALUES (NULL, ?, ?, ?");
+    $q->bind_param("ii", $patientId, $appointmentId);
+    $q->execute();
+}
 $db = new mysqli("localhost", "root", "", "med");
 $appointmentId = $_REQUEST['id'];
 $q = $db->prepare("SELECT * FROM appointment WHERE id = ?");
@@ -22,17 +41,4 @@ if(isset($_REQUEST['firstName']) && isset($_REQUEST['lastName'])
     $q->bind_param("ii",  $patientId, $appointmentId);
     $q->execute();
     echo "Zapisano na wizytę!";
-} else { 
-    ?>
-        <form action="appointment.php">
-        Imię: <input type="text" name="firstName">
-        Nazwisko: <input type="text" name="lastName">
-        Telefon: <input type="text" name="phone">
-        <input type="hidden" value="<?php echo $appointmentId ?>" name="id">
-        <input type="submit" value="Zapisz wizytę">
-        </form>
-    <?php
-
 }
-?>
-

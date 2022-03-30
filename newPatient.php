@@ -1,7 +1,7 @@
 <?php 
 if(isset($_REQUEST['firstName']) && isset($_REQUEST['lastName'])) {
     $db = new mysqli("localhost", "root", "", "med");
-    $q = $db->prepare("INSERT INTO patient VALUES (NULL, ?, ?, ?");
+    $q = $db->prepare("INSERT INTO patient VALUES (NULL, ?, ?, ?)");
     $q->bind_param("ssss", $_REQUEST['firstName'], $_REQUEST['lastName'],
                             $_REQUEST['phone'], $_REQUEST['pesel']);
     if($q->execute()) {
