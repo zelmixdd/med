@@ -1,12 +1,13 @@
 <?php
 if(isset($_REQUEST['firstName']) && isset($_REQUEST['lastName'])) {
     $db = new mysqli("localhost", "root", "", "med");
-    $_q = $db->prepare("INSERT INTO staff VALUES(NULL, ?, ?)");
-    $_q->bind_param("ss", $_REQUEST['firstName'], $_REQUEST['lastName']);
+    $q = $db->prepare("INSERT INTO staff VALUES(NULL, ?, ?)");
+    $q->bind_param("ss", $_REQUEST['firstName'], $_REQUEST['lastName']);
     if($q->execute()) {
-        echo "dodaj nowy personel";
+        echo "dodano nowy personel";
     }
-    else {
+    
+}else {
         echo '<form action="addStaff.php" method="post">
         <label for="firstName">Imię</label>
         <input type="text" name="firstName" id="firstName">
@@ -16,7 +17,6 @@ if(isset($_REQUEST['firstName']) && isset($_REQUEST['lastName'])) {
         </form>
         ';
     }
-}
 
 
 
