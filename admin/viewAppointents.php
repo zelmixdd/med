@@ -1,6 +1,6 @@
 <?php
 $db = new mysqli("localhost", "root", "", "med");
-//zakładamy, że dostaliśmy z requesta
+
 $staffId = $_REQUEST['id'];
 
 $q = $db->prepare("SELECT appointment.id, appointment.date, patient.firstName, patient.lastName FROM appointment 
