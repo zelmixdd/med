@@ -1,5 +1,9 @@
 {
     "require": {
+<<<<<<< HEAD
         "smarty/smarty": "4.1.0"
+=======
+        "smarty/smarty" : "4.1.0"
+>>>>>>> a5612c5bdb0763362a562970a066ec142e3af68c
     }
 }

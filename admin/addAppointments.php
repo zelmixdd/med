@@ -28,12 +28,21 @@ $staffResult = $q->get_result();
 </form>
 
 <?php
+<<<<<<< HEAD
 //sprawdz czy dostałeś komplet z formularza
+=======
+
+>>>>>>> a5612c5bdb0763362a562970a066ec142e3af68c
 if(isset($_REQUEST['staffId']) && isset($_REQUEST['startTime']) && isset($_REQUEST['endTime']) && isset($_REQUEST['interval'])) {
     $staffId = $_REQUEST['staffId'];
     $startTime = strtotime($_REQUEST['startTime']);
     $endTime = strtotime($_REQUEST['endTime']);
+<<<<<<< HEAD
     $interval = $_REQUEST['interval']*60; //interval w sekundach
+=======
+    $interval = $_REQUEST['interval']*60;
+    
+>>>>>>> a5612c5bdb0763362a562970a066ec142e3af68c
     $q = $db->prepare("INSERT INTO appointment VALUES (NULL, ?, ?)");
     for($i = $startTime; $i < $endTime; $i += $interval) {
         $date = date("Y-m-d H:i:s", $i);
@@ -41,5 +50,8 @@ if(isset($_REQUEST['staffId']) && isset($_REQUEST['startTime']) && isset($_REQUE
         $q->execute();
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> a5612c5bdb0763362a562970a066ec142e3af68c
 ?>

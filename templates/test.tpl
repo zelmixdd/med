@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,3 +11,6 @@
     dziala
 </body>
 </html>
+=======
+dziala
+>>>>>>> a5612c5bdb0763362a562970a066ec142e3af68c

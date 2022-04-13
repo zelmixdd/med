@@ -1,0 +1,7 @@
+<<<<<<< HEAD
+vendor/*
+templates_c/*
+=======
+templates_c/*
+vendor/*
+>>>>>>> a5612c5bdb0763362a562970a066ec142e3af68c
