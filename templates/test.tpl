@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +8,8 @@
 </head>
 <body>
     dziala
+    {foreach $staffList as $staffMember}
+    <h2> {$staffMember} </h2>
+    {/foreach}
 </body>
 </html>
-=======
-dziala
->>>>>>> a5612c5bdb0763362a562970a066ec142e3af68c
